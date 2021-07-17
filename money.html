@@ -10,6 +10,25 @@
 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
  
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script>
+	//定义一个函数，完成存款的计算
+	function calc(){
+		//1. 获取存款金额（读取文本框中用户输入的数字）
+		var cunkuanjine = document.getElementById("amount").value;
+		//上面取到的值是：“8000”，不是数字，不能做运算
+		//“8000”-->8000
+		var cunkuannum = parseInt(cunkuanjine);//字符串转成整数
+		//2. 开始计算
+		//取得年利率
+		var lilv = document.getElementById("year").value;
+        var lilvnum = parseInt(lilv);
+		var lixi = cunkuannum * lilv;//lixi
+		var total = cunkuannum + lixi;//本息合计
+		//3. 把计算结果写入相应文本框
+		document.getElementById("lixi").value=lixi;
+		document.getElementById("total").value=total;
+	}
+</script>
 </head>
 	<body>
 		<div class="container text-center">
@@ -21,7 +40,7 @@
 			<tr>
 				<td>存款金额</td>
 				<td>
-					<input class="form-control" type="text"id="ammount"placeholder="请输入存款金额">
+					<input class="form-control" type="text"id="amount"placeholder="请输入存款金额">
 				</td>
 			</tr>
 			<tr>
@@ -38,7 +57,7 @@
 			<tr>
 				<td>所得利息</td>
 				<td>
-					<input type="text" class="form-control" readonly="readonly">
+					<input type="text" id="lixi" class="form-control" readonly="readonly">
 				</td>
 			</tr>
 			<tr>
@@ -49,7 +68,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button class=" btn btn-primary btn-block">计算</button>
+					<button onclick="calc()" class=" btn btn-primary btn-block">计算</button>
 				</td>
 				<td></td>
 			</tr>
